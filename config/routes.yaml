@@ -1,0 +1,22 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+todo:
+  path: /
+  controller: App\Controller\ToDoController::index
+
+task.create:
+  path: /create
+  controller: App\Controller\ToDoController::create
+
+task.store:
+  path: /store
+  controller: App\Controller\ToDoController::store
+
+task.done:
+  path: /done/{id}/{done}
+  controller: App\Controller\ToDoController::changeDoneMark
+
+task.delete:
+  path: /delete/{id}
+  controller: App\Controller\ToDoController::delete

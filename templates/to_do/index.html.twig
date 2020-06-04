@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Your Todo List!{% endblock %}
+
+{% block body %}
+	<h1>Your Tasks:</h1>
+	{% if tasks != null %}
+		<div>
+			<ul>
+				{% for task in tasks %}
+					{% if task.done %}
+						<li class="done">{{ task.name }}</li>
+						<a href="{{ path('task.done', {id: task.id, done: 1}) }}">Undone</a>
+					{% else %}
+						<li>{{ task.name }}</li>
+						<a href="{{ path('task.done', {id: task.id, done: 0}) }}">Done</a>
+					{% endif %}
+					<a href="{{ path('task.delete', {id: task.id}) }}">Delete</a>
+				{% endfor %}
+			</ul>
+			<a href="{{ path('task.create')}}">Add new task</a>
+		</div>
+	{% else %}
+		<div>You don't have any tasks <a href="{{ path('task.create')}}">click here</a> to add new.</div>
+	{% endif %}
+{% endblock %}
